@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bubbly Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Sparkle animation layer -->
+  <div class="sparkles"></div>
+
+  <!-- Main Card -->
+  <div class="card">
+    <h1>Hey Sampu 💕</h1>
+    <p>
+      From my heart to this screen…<br>
+      Will you be my Walking ChatGPT? 🌹
+    </p>
+
+    <button id="yes" onclick="sayYes()">Yes 💖</button>
+    <button id="no" onmouseover="moveNo()">No 😅</button>
+  </div>
+
+  <script>
+    /* YES button */
+    function sayYes() {
+      if (navigator.vibrate) navigator.vibrate(200);
+
+      document.body.innerHTML = `
+        <div class="sparkles"></div>
+        <div class="success-screen">
+          <h1>YAYYYY 🎉</h1>
+          <p>You just made me the happiest person alive 🥹❤️</p>
+          <img src="images/valentine.jpg" alt="Valentine" class="valentine-img">
+        </div>
+      `;
+    }
+
+    /* NO button escape */
+  function moveNo() {
+    const button = document.getElementById("no");
+    const padding = 16;
+
+    const maxX = window.innerWidth - button.offsetWidth - padding;
+    const maxY = window.innerHeight - button.offsetHeight - padding;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    button.style.left = `${x}px`;
+    button.style.top = `${y}px`;
+  }
+
+    /* Sparkle animation */
+    const sparkleContainer = document.querySelector(".sparkles");
+
+    function createSparkle() {
+      const sparkle = document.createElement("span");
+      sparkle.className = "sparkle";
+
+      sparkle.style.left = Math.random() * 100 + "vw";
+      sparkle.style.bottom = "-10px";
+      sparkle.style.animationDuration = Math.random() * 4 + 4 + "s";
+      sparkle.style.opacity = Math.random();
+
+      sparkleContainer.appendChild(sparkle);
+
+      setTimeout(() => sparkle.remove(), 8000);
+    }
+
+    setInterval(createSparkle, 250);
+  </script>
+
+</body>
+</html>
